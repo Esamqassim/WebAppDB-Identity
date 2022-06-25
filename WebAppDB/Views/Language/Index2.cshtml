@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebAppDB.Models.Language>
+
+<h1>Person Languuges </h1>
+<p>@ViewBag.Msg</p>
+
+
+<h2>Speaking Languge</h2>
+
+
+
+
+<h3>Availble Languge</h3>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>LanguageName</td>
+
+        <td>Add link</td>
+    </tr>
+    @if (Model != null)
+    {
+        @foreach (Language city in Model)
+        {
+            <tr>
+
+                <td>@city.LanguageID</td>
+                <td>@city.LanguageName</td>
+
+                <td>
+                    <!--
+                    <a asp-action="Edit" asp-route-id="@city.LanguageID">Edit</a> |
+
+                    <a asp-action="Delete" asp-route-id="@city.LanguageID">Delete</a>
+                    -->
+                    <a asp-action="Add" asp-route-id="@city.LanguageID">Add</a>
+
+
+
+                </td>
+
+
+            </tr>
+
+
+            <!-- <a asp-action="Details2" asp-controller="Peoples" asp-route-id="1">Back to Details</a>
+
+             -->
+
+
+
+
+        }
+        
+    }
+   
+</table>
+<div> <a asp-action="Details2" asp-controller="Peoples" asp-route-id="1">Back to Details</a></div>

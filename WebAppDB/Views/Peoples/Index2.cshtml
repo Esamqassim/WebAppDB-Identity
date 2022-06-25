@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebAppDB.Models.Person>
+   
+ @{ ViewData["Title"] = "People List"; }
+
+   <h1>People List</h1>
+
+
+    <form asp-action="Create2" method="get">
+
+        <input type="submit" value="Add New Person" class="btn btn-danger" />
+
+    </form>
+    <table>
+        <tr>
+            <td>FistName</td>
+            <td>LasttName</td>
+            <td>PhoneNo.</td>
+            <td>City</td>
+            <td>Country</td>
+            <td>Edit link | Delete link</td>
+        </tr>
+        @if (Model != null)
+        {
+        @foreach (Person city in Model)
+        {
+    <tr>
+        <td>@city.FirstName</td>
+        <td>@city.LastName</td>
+        <td>@city.PhoneNumber</td>
+        <td>@city.CityName</td>
+       
+           <td>@city.CountryName</td>
+        
+        <td>
+            <a asp-action="Edit2" asp-route-id="@city.Id">Edit</a> |
+            <a asp-action="Details2" asp-route-id="@city.Id">Details</a> |
+            <a asp-action="Delete2" asp-route-id="@city.Id">Delete</a>
+        </td>
+
+    </tr>
+        }
+        }
+    </table>
+    <div>
+        @ViewBag.Msg
+    </div>

@@ -1,0 +1,31 @@
+﻿@model List<IdentityRole>
+@{ ViewData["Title"] = "Index"; }
+
+<h1>Admin</h1>
+
+
+<a asp-action="Create" class="btn btn-primary mt-4 mb-4">Create new role</a>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (IdentityRole role in Model)
+        {
+<tr>
+    @if (role.Name != "SuperAdmin")
+    {
+<td>@role.Name</td>
+                    <td>@role.Id</td>
+                                        @if (role.Name.Contains("Admin"))
+                                        {
+                    <td><a asp-action="ManageUserRoles" asp-route-id="@role.Id">Manage</a></td>                    }                }
+
+</tr>}
+    </tbody>
+</table>

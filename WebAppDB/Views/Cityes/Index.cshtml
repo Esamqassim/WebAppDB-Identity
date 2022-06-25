@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebAppDB.Models.City>
+@{
+    ViewData["Title"] = "City List";
+}
+<h1>City List</h1>
+
+
+<form asp-action="Create" method="get">
+
+    <input type="submit" value="Add New City" class="btn btn-danger" />
+
+</form>
+<table>
+    <tr>
+        <td>Id</td>
+        <td>CountryName</td>
+        <td>CityName</td>
+        <td>Edit link | Delete link</td>
+    </tr>
+    @if (Model != null)
+    {
+        @foreach (City city in Model)
+        {
+            <tr>
+
+                <td>@city.CityID</td>
+                <td>@city.CountryName</td>
+                <td>@city.CityName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@city.CityID">Edit</a> |
+
+                    <a asp-action="Delete" asp-route-id="@city.CityID">Delete</a>
+                </td>
+
+            </tr>
+        }
+    }
+</table>

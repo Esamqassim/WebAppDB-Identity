@@ -1,0 +1,40 @@
+﻿
+@model IEnumerable<WebAppDB.Models.Language>
+@{
+    ViewData["Title"] = "Language List";
+}
+
+<h1>Language List</h1>
+
+
+<form asp-action="Create" method="get">
+
+    <input type="submit" value="Add New Language" class="btn btn-danger" />
+
+</form>
+<table>
+    <tr>
+        <td>Id</td>
+        <td>LanguageName</td>
+
+        <td>Edit link | Delete link</td>
+    </tr>
+    @if (Model != null)
+    {
+        @foreach (Language city in Model)
+        {
+            <tr>
+
+                <td>@city.LanguageID</td>
+                <td>@city.LanguageName</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@city.LanguageID">Edit</a> |
+
+                    <a asp-action="Delete" asp-route-id="@city.LanguageID">Delete</a>
+                </td>
+
+            </tr>
+        }
+    }
+</table>
